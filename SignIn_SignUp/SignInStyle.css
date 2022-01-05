@@ -1,0 +1,47 @@
+
+.box{
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    min-width: 400px;
+    display: grid;
+    justify-content: center;
+}
+.container{
+    padding: 20em;
+    display: flex;
+    justify-content: center;
+}
+.image{
+    display: grid;
+    justify-content: center;
+    margin: 5px;
+    margin-top: 20px;
+}
+.username, .password{
+    margin: 10px;
+    width: 300px;
+    height: 2em;
+
+}
+.button{
+    display: grid;
+    justify-content: center;
+}
+.btn{
+    width: 310px;
+    background-color: rgb(0, 149, 246);
+    border: none;
+    border-radius: 10px;
+    height: 2em;
+    color: #fff;
+}
+.SignUp{
+    display: grid;
+    justify-content: center;
+    padding-top:10px;
+    font-weight: lighter;
+}
+span{
+    color: rgb(0, 149, 246);
+    font-weight: bold;
+}
