@@ -1,3 +1,9 @@
+<?php
+
+require 'PHP/config.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
