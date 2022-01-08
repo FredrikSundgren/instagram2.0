@@ -1,3 +1,6 @@
+<?php
+include 'comments.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,8 +47,6 @@
           <div class="ikon">
             <i class="far fa-heart"></i>
           </div>
-          
-          
           <div class="dropdown">
             <div class="dropbtn"><i class="fas fa-user-circle"></i></div>
             <div class="dropdown-content">
@@ -136,12 +137,13 @@
               <div class="ikon">
                 <i class="far fa-smile"></i>
               </div>
-              <input
-                type="text"
-                class="comment-box"
-                placeholder="lägg till kommentar"
-              />
-              <button class="comment-btn">Post</button>
+              <?php
+                <form action="'.sendComments().'" method="POST" >
+                  <input type="hidden" name="user_id" value="user_id" >
+                  <input type="text" class ="comment-box" name="comment_section" placeholder="Lägg till kommentar"/>
+                  <button name="submit_comment" type="submit_comment" class="comment-btn">Post</button>
+                </form>
+              ?>
             </div>
           </div>
           <div class="post">
