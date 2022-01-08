@@ -137,13 +137,13 @@ include 'comments.php';
               <div class="ikon">
                 <i class="far fa-smile"></i>
               </div>
-              <?php
+              
                 <form action="'.sendComments().'" method="POST" >
                   <input type="hidden" name="user_id" value="user_id" >
                   <input type="text" class ="comment-box" name="comment_section" placeholder="Lägg till kommentar"/>
                   <button name="submit_comment" type="submit_comment" class="comment-btn">Post</button>
                 </form>
-              ?>
+              
             </div>
           </div>
           <div class="post">
