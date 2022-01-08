@@ -1,6 +1,6 @@
 <?php 
 
-require_once 'upload.php';
+require_once 'PHP/upload_file.php';
 
 ?>
 
@@ -15,8 +15,6 @@ require_once 'upload.php';
 <body>
     <form action="upload.php" method="post" enctype="multipart/form-data">
     <input type="file" accept="image/png, image/jpeg, image/jpg" name="filename">
-    <label for="title">Title</label>
-    <input type= "text" name="title">
     <label for="content">Content</label>
     <input type="text" name="content">
     <button type="submit" name="submit">Upload</button>

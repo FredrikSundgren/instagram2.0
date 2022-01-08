@@ -1,7 +1,7 @@
 <?php
 
 $host = 'localhost';
-$db = 'InstagramDatabase';
+$db = 'instagramdatabase';
 $user = 'root';
 $password = 'root';
 
