@@ -1,6 +1,3 @@
-<?php
-include 'comments.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
