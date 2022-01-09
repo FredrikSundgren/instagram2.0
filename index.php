@@ -1,34 +1,38 @@
+<?php
+  include "comments.php";
+  //Database Connection
+  $servername = "localhost";
+  $username = "root";
+  $password = "root";
+  $dbname = "instagramdatabase";
+
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/login.style.css" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/login.style.css"/>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=, initial-scale=1.0"/>
     <title>Instagräm</title>
   </head>
   <body>
     <nav class="navbar">
       <div class="nav-wrapper" class="dropdown">
       <a href="index.php"><img src="img/instagram-logga.png" class="insta-img" alt="" /></a>
-
         <input type="text" class="search" placeholder="Sök" />
         <div class="navigering-items">
-
           <div class="ikon">
             <i class="fas fa-home"></i>
           </div>
@@ -121,26 +125,35 @@
                 </div>
               </div>
               <p class="likes">55 likes</p>
-              <p class="description">
-                <span>Användarnamn</span>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta,
-                recusandae facere dolore animi labore, inventore tempora
-                corrupti temporibus optio cupiditate ad eaque! Amet quisquam
-                voluptatibus perspiciatis nisi quis ut laudantium.
-              </p>
-              <p class="post-time">2 min</p>
+              <?php
+              //SQL to fetch
+              $SQLFetch = "SELECT comment FROM comments";
+              //run sql
+              $resultSQLFetch = $conn->query($SQLFetch);
+              //Check if data exists
+              if ($resultSQLFetch->num_rows > 0){
+                //Repeat for each row
+                while($row = $resultSQLFetch->fetch_assoc()){
+                  ?>
+                  <p class="description">
+                  <span>Användarnamn</span>
+                  <!--php echo comment -->
+                  <?= $row["comment"]; ?>
+                  </p>
+                  <?php
+                }
+              }
+              ?>
             </div>
             <div class="comment-wrapper">
               <div class="ikon">
                 <i class="far fa-smile"></i>
               </div>
-              
-                <form method="post" action="comments.php">
+                <form method="POST" id="commentForm">
                   <input type="hidden" name="user_id" value="user_id" >
-                  <input type="text" class ="comment-box" name="comment_section" placeholder="Lägg till kommentar"/>
-                  <button name="submit_comment" type="submit_comment" class="comment-btn">Post</button>
+                  <input type="text" class="comment-box" name="comment_section" placeholder="Lägg till kommentar"/>
+                  <button name="submit_comment" type="submit" class="comment-btn">Post</button>
                 </form>
-              
             </div>
           </div>
           <div class="post">
@@ -410,6 +423,12 @@
         </div>
       </div>
     </section>
-    <script src="script.js"></script>
+    <script>
+      //Stops the form from submiting each time
+      if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+      }
+    </script>
+    <!-- <script src="script.js"></script> -->
   </body>
 </html>
