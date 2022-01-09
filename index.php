@@ -138,7 +138,7 @@ include 'comments.php';
                 <i class="far fa-smile"></i>
               </div>
               
-                <form action="'.sendComments().'" method="POST" >
+                <form method="post" action="">
                   <input type="hidden" name="user_id" value="user_id" >
                   <input type="text" class ="comment-box" name="comment_section" placeholder="Lägg till kommentar"/>
                   <button name="submit_comment" type="submit_comment" class="comment-btn">Post</button>
